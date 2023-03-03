@@ -18,8 +18,16 @@ const Tab = createBottomTabNavigator();
 const Homepage = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="second" component={SecondPage} />
-      <Tab.Screen name="third" component={ThirdPage} />
+      <Tab.Screen
+        name="second"
+        options={{headerShown: false}}
+        component={SecondPage}
+      />
+      <Tab.Screen
+        name="third"
+        options={{headerShown: false}}
+        component={ThirdPage}
+      />
     </Tab.Navigator>
   );
 };
