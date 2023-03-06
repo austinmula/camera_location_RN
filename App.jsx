@@ -12,6 +12,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Text, View} from 'react-native';
+import LocationScreen from './screens/LocationScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,9 +20,9 @@ const Homepage = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="second"
+        name="location"
         options={{headerShown: false}}
-        component={SecondPage}
+        component={LocationScreen}
       />
       <Tab.Screen
         name="third"
@@ -29,14 +30,6 @@ const Homepage = () => {
         component={ThirdPage}
       />
     </Tab.Navigator>
-  );
-};
-
-const SecondPage = () => {
-  return (
-    <View>
-      <Text>Second page</Text>
-    </View>
   );
 };
 
