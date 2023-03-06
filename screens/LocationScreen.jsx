@@ -3,11 +3,13 @@ import {Platform, Text, View, Button} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Geolocation from '@react-native-community/geolocation';
 import {PermissionsAndroid} from 'react-native';
+import {useNetInfo} from '@react-native-community/netinfo';
 
 function LocationScreen() {
   const [currentLongitude, setCurrentLongitude] = useState('...');
   const [currentLatitude, setCurrentLatitude] = useState('...');
   const [locationStatus, setLocationStatus] = useState('');
+  const netInfo = useNetInfo();
 
   useEffect(() => {
     const requestLocationPermission = async () => {
@@ -86,7 +88,12 @@ function LocationScreen() {
   };
   return (
     <SafeAreaView
-      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 16,
+      }}>
       <Text>Location</Text>
       <Text style={{fontWeight: 'bold'}}>{locationStatus}</Text>
       <Text
@@ -104,6 +111,31 @@ function LocationScreen() {
           marginTop: 16,
         }}>
         Latitude: {currentLatitude}
+      </Text>
+      <Text
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 16,
+        }}>
+        Network Type: {netInfo.type}
+      </Text>
+      <Text
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 16,
+        }}>
+        Is Connected? {netInfo.isConnected?.toString()}
+      </Text>
+      <Text
+        style={{
+          textAlign: 'center',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 16,
+        }}>
+        Network Type: {JSON.stringify(netInfo.details)}
       </Text>
       <View style={{marginTop: 20}}>
         <Button title="Get Location" onPress={getOneTimeLocation} />

@@ -34,14 +34,6 @@ const Homepage = () => {
   );
 };
 
-const ThirdPage = () => {
-  return (
-    <View>
-      <Text>Third page</Text>
-    </View>
-  );
-};
-
 const Drawer = createDrawerNavigator();
 
 function App() {
