@@ -13,6 +13,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Text, View} from 'react-native';
 import LocationScreen from './screens/LocationScreen';
+import CameraScreen from './screens/CameraScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,9 +26,9 @@ const Homepage = () => {
         component={LocationScreen}
       />
       <Tab.Screen
-        name="third"
+        name="camera"
         options={{headerShown: false}}
-        component={ThirdPage}
+        component={CameraScreen}
       />
     </Tab.Navigator>
   );
@@ -47,7 +48,11 @@ function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name="home" component={Homepage} />
+        <Drawer.Screen
+          name="home"
+          component={Homepage}
+          options={{headerShown: false}}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
